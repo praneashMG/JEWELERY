@@ -6,7 +6,11 @@ import HeroSection from './components/HeroSection';
 import GoldCollection from './components/GoldCollection';
 import LuxuryGoldChokers from './components/LuxuryGoldChokers';
 import CartPage from './components/CartPage';
-import Footer from './components/footer'; // Make sure the filename is lowercase if the file is named `footer.jsx`
+import Footer from './components/footer';
+
+import Collections from './pages/Collections';
+import About from './pages/About';
+import Contact from './pages/Contact';
 
 function App() {
   const [cart, setCart] = useState([]);
@@ -21,15 +25,17 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar cartItemCount={cart.length} />
 
       <Routes>
         <Route path="/" element={<><HeroSection /><GoldCollection /></>} />
         <Route path="/LuxuryGoldChokers" element={<LuxuryGoldChokers addToCart={addToCart} />} />
         <Route path="/CartPage" element={<CartPage cartItems={cart} removeFromCart={removeFromCart} />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
-      {/* ✅ Correct usage of Footer */}
       <Footer />
     </div>
   );
